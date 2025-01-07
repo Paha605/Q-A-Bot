@@ -1,0 +1,81 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.dll
+*.egg-info/
+*.log
+
+# Environments
+src/.env
+.venv/
+venv/
+ENV/
+env/
+.Python
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+
+# Testing
+.tox/
+.nox/
+coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Pytest cache and state
+.pytest_cache/
+htmlcov/
+.mypy_cache/
+dmypy.json
+dmypy.log
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# AIogram specific (configurations, tokens)
+config.ini
+config.yaml
+token.txt
+
+# Output folders (for example, media downloaded by the bot)
+output/
+downloads/
+media/
+
+# SQLite Database files
+*.sqlite3
+*.db
+
+# Docker
+docker-compose*.yaml
+Dockerfile
+*.dockerfile
+.dockerignore
+
+# Virtual environment folders
+.venv/
+venv/
+ENV/
+env/
+.venv
+.Python
+data.txt
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+
+# Git-specific files
+*.orig
+

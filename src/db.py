@@ -70,7 +70,7 @@ class Database:
 
         conn.commit()
         conn.close()
-        print("Database cleared.")
+        print("Database cleared..")
 
     async def clear_time(self):
         # Создание планировщика

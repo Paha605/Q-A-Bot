@@ -4,5 +4,5 @@ import os
 load_dotenv()
 
 TOKEN = os.getenv("TOKEN")
-ADMIN = int(os.getenv("ADMIN"))
+ADMIN = os.getenv("ADMIN")
 SUPERADMIN = int(os.getenv("SUPERADMIN"))

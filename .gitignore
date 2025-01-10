@@ -65,6 +65,7 @@ Dockerfile
 venv/
 ENV/
 env/
+.env
 .venv
 .Python
 data.txt

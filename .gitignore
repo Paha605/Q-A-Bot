@@ -54,11 +54,6 @@ media/
 *.sqlite3
 *.db
 
-# Docker
-docker-compose*.yaml
-Dockerfile
-*.dockerfile
-.dockerignore
 
 # Virtual environment folders
 .venv/

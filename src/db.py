@@ -77,7 +77,7 @@ class Database:
         scheduler = AsyncIOScheduler()
 
         # Добавление задания, которое выполняется каждые 90 дней
-        scheduler.add_job(self.clear_db, trigger='interval', days=90)
+        scheduler.add_job(self.clear_db, trigger='interval', days=21)
 
         # Запуск планировщика
         scheduler.start()

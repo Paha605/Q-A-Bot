@@ -5,4 +5,5 @@ load_dotenv()
 
 TOKEN = os.getenv("TOKEN")
 ADMIN = os.getenv("ADMIN")
-SUPERADMIN = int(os.getenv("SUPERADMIN"))
+SUPERADMIN = os.getenv("SUPERADMIN")
+

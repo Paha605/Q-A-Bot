@@ -8,6 +8,9 @@ class UserService:
 
 
 admin_list = [int(ADMIN[:10]), int(ADMIN[10:19]), int(ADMIN[19:28])]
+# test_admin_list = [int(ADMIN[:10])]
+
+# admin_list = [int(ADMIN[10:19]), int(ADMIN[19:28])]
 
 def is_admin(user_id):
     return user_id in admin_list

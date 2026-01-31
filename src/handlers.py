@@ -1,3 +1,5 @@
+import asyncio
+
 import src.keyboards as kb
 from src.db import Database
 from src.user_manager import is_admin, admin_list
@@ -31,20 +33,36 @@ async def replyMsg(message: Message, state: FSMContext):
     await state.set_state(BroadcastState.question)
     await message.answer("Напиши свой вопрос, он будет отправлен анонимно")
 
+
 @router.message(BroadcastState.question)
 async def process_text(message: Message, state: FSMContext) -> None:
     await state.update_data(text=message.text)
+
     if message.text[0] != '/':
         db.add_question(message.date, message.text)
         await message.reply(html.bold("Твой вопрос был отправлен!"))
-        await state.clear()
-        time.sleep(15)
-        for admin in admin_list:
-            await bot.send_message(admin, "<b>Новый вопрос: </b>" + message.text, parse_mode="HTML")
+
+        # Отправляем сообщение админам через 15 секунд асинхронно
+        asyncio.create_task(send_to_admins_after_delay(message.text))
+
         await state.clear()
     else:
         await state.clear()
 
+
+async def send_to_admins_after_delay(text: str, delay: int = 15):
+    """Отправляет сообщение админам через указанную задержку"""
+    await asyncio.sleep(delay)  # Асинхронное ожидание
+
+    for admin in admin_list:
+        try:
+            await bot.send_message(
+                admin,
+                "<b>Новый вопрос: </b>" + text,
+                parse_mode="HTML"
+            )
+        except Exception as e:
+            print(f"Не удалось отправить сообщение админу {admin}: {e}")
 @router.message()
 async def handle_other_messages(message: Message, state: FSMContext) -> None:
     if is_admin(message.from_user.id) == True:

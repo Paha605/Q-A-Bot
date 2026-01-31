@@ -6,9 +6,8 @@ from apscheduler.schedulers.asyncio import AsyncIOScheduler
 class Database:
     def __init__(self, db_file=None):
         if db_file is None:
-            db_dir = r"C:\Users\Pavel\OneDrive\Рабочий стол\Algoritms\Algoritms 1.0\Q&A\.venv\Lib"
-            os.makedirs(db_dir, exist_ok=True)
-            self.db_file = os.path.join(db_dir, "questions.db")
+            # База данных будет создана в текущей рабочей директории
+            self.db_file = "questions.db"
         else:
             self.db_file = db_file
 

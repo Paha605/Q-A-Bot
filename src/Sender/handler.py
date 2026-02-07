@@ -26,20 +26,14 @@ db = Database()
 bot = Bot(token=TOKEN)
 
 
-@rt.message(Command("cleardb"))
-async def clearr_db(message: Message) -> None:
-    if is_superadmin(message.from_user.id) == True:
-        Database.clear_db(db)
-        await message.answer("Вы очистили базу данных...")
-
-
 @rt.message(Command("question"))
 @rt.message(F.text == "Вопросы")
 @rt.message(F.text == "Смотреть вопросы")
 async def question_list(message: Message, state: FSMContext) -> None:
     if is_admin(message.from_user.id) == True:
+        
         question_list = []
-        connection = sqlite3.connect(r'C:\Users\Pavel\OneDrive\Рабочий стол\Algoritms\Algoritms 1.0\Q&A\.venv\Lib\questions.db')
+        connection = db.create_connection()
         cursor = connection.cursor()
 
         # Выбираем все вопросы

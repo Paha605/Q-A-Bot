@@ -68,7 +68,8 @@ async def question_list(message: Message, state: FSMContext) -> None:
         await state.set_state(BroadcastState.question)
         await message.answer("Напиши свой вопрос, он будет отправлен анонимно")
 
-@rt.message(Command("cleardb"))
+@rt.message(Command("clear"))
+@rt.message(F.text == "Очистить вопросы")
 async def clear_db_handler(message: Message, state: FSMContext):
     if not is_admin(message.from_user.id):
         print("Someone tryed to clear db, User ID:", message.from_user.id)

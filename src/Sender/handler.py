@@ -70,11 +70,12 @@ async def question_list(message: Message, state: FSMContext) -> None:
 
 @rt.message(Command("cleardb"))
 async def clear_db_handler(message: Message, state: FSMContext):
-    if not is_superadmin(message.from_user.id):
-        print("Someone tryed clear db User ID:", message.from_user.id)
-        await message.answer("⛔ У тебя нет прав")
+    if not is_admin(message.from_user.id):
+        print("Someone tryed to clear db, User ID:", message.from_user.id)
         return
-    elif is_superadmin(message.from_user.id):
+    elif is_admin(message.from_user.id):
         await message.answer("🧹 Очищаю базу данных...")
         await asyncio.to_thread(db.clear_db)
+        print("Someone cleaned db, User ID:", message.from_user.id)
         await message.answer("✅ База данных успешно очищена")
+

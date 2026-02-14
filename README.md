@@ -15,7 +15,7 @@
 1. Клонируйте репозиторий:
 
     ```bash
-    git clone https://github.com/your-username/Q-A-Bot.git
+    git clone https://github.com/Paha605/Q-A-Bot.git
     cd Q-A-Bot
     ```
 
